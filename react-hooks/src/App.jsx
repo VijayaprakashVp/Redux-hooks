@@ -10,17 +10,17 @@ const PrivateRoute = ({ isAuthenticated, children }) => {
 };
 
 function App() {
-  const isAuthenticated = true; // This needs to get from the redux
+  const isAuthenticated = false; // This needs to get from the redux
 
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route
-          path="/login"
+          path="/"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Login />
+              <Home />
             </PrivateRoute>
           }
         ></Route>

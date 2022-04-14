@@ -8,7 +8,7 @@ const initState = {
   username: "",
 };
 
-export const reducer = (store = initState, { type, payload }) => {
+export const Loginreducer = (store = initState, { type, payload }) => {
   // { type, payload } => comes from action action.type, action.payload+
 
   switch (type) {
