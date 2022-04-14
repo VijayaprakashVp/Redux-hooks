@@ -1,16 +1,37 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import { Home } from "./Components/Home";
 import { Login } from "./Components/Login";
 import { TodosCreate } from "./Components/TodosCreate";
 
+const PrivateRoute = ({ isAuthenticated, children }) => {
+  return isAuthenticated ? children : <Navigate to="/login" />;
+  // Children => here, components is the children, If the "user" not logged in navigate the user to "Login Page"
+};
+
 function App() {
+  const isAuthenticated = true; // This needs to get from the redux
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/todos-create" element={<TodosCreate />}></Route>
+        <Route
+          path="/login"
+          element={
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <Login />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/todos-create"
+          element={
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <TodosCreate />
+            </PrivateRoute>
+          }
+        ></Route>
       </Routes>
     </div>
   );
