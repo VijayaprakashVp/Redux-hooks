@@ -20,9 +20,18 @@ export const Loginreducer = (store = initState, { type, payload }) => {
         isAuthenticated: true,
         token: payload.token,
         username: payload.username,
+        loading: false,
+        error: false,
       };
     case LOGIN_FAILURE:
-      return { ...store, error: true };
+      return {
+        ...store,
+        isAuthenticated: false,
+        token: "",
+        username: "",
+        loading: false,
+        error: true,
+      };
     default:
       return store;
   }
