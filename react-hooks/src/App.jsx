@@ -1,7 +1,19 @@
 import "./App.css";
+import { Routes, Route, Link } from "react-router-dom";
+import { Home } from "./Components/Home";
+import { Login } from "./Components/Login";
+import { TodosCreate } from "./Components/TodosCreate";
 
 function App() {
-  return <div className="App">Hey!</div>;
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/todos-create" element={<TodosCreate />}></Route>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
