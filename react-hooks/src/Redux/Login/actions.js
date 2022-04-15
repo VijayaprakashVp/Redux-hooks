@@ -12,7 +12,7 @@ export const loginSuccess = (payload) => ({
 });
 
 export const loginFailure = () => ({
-  type: LOGIN_LOGIN_FAILURE,
+  type: LOGIN_FAILURE,
 });
 
 // This login is working because of "Thunk" Middleware.. Passing in "store" {const middleware = [thunk]}

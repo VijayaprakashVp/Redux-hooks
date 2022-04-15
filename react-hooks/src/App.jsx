@@ -1,5 +1,6 @@
-import "./App.css";
+// import "./App.css";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Home } from "./Components/Home";
 import { Login } from "./Components/Login";
 import { TodosCreate } from "./Components/TodosCreate";
@@ -10,10 +11,16 @@ const PrivateRoute = ({ isAuthenticated, children }) => {
 };
 
 function App() {
-  const isAuthenticated = false; // This needs to get from the redux
+  const { isAuthenticated } = useSelector((state) => state.login); // This comes from the redux
 
   return (
     <div className="App">
+      <div>
+        <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/todos-create">Create Todos</Link>
+      </div>
+
       <Routes>
         <Route path="/login" element={<Login />}></Route>
         <Route

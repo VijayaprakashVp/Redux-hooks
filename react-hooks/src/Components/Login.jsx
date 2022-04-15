@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../Redux/Login/actions";
+import { Navigate } from "react-router-dom";
 
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.login);
 
   const handleLogin = () => {
     const userDetails = {
@@ -17,6 +19,10 @@ export const Login = () => {
     dispatch(login(userDetails));
   };
 
+  if (isAuthenticated) {
+    // console.log("From isAuthenticated");
+    return <Navigate to="/" />;
+  }
   return (
     <div>
       <input
