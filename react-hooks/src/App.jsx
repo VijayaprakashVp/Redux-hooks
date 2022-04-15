@@ -16,8 +16,8 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
+        <Link to="/">Home</Link> <br />
+        <Link to="/login">Login</Link> <br />
         <Link to="/todos-create">Create Todos</Link>
       </div>
 
